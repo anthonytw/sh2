@@ -2,7 +2,7 @@
  * Copyright 2015-2018 Hillcrest Laboratories, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License and 
+ * you may not use this file except in compliance with the License and
  * any applicable agreements you may have with Hillcrest Laboratories, Inc.
  * You may obtain a copy of the License at
  *
@@ -26,6 +26,10 @@
 
 #ifndef SH2_H
 #define SH2_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -434,7 +438,7 @@ int sh2_open(sh2_Hal_t *pHal,
 /**
  * @brief Close a session with a sensor hub.
  *
- * This should be called at the end of a sensor hub session.  
+ * This should be called at the end of a sensor hub session.
  * The underlying SHTP and HAL instances will be closed.
  *
  */
@@ -683,5 +687,9 @@ int sh2_finishCal(sh2_CalStatus_t *status);
  * @return SH2_OK (0), on success.  Negative value from sh2_err.h on error.
  */
 int sh2_setIZro(sh2_IZroMotionIntent_t intent);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif

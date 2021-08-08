@@ -2,7 +2,7 @@
  * Copyright 2015-16 Hillcrest Laboratories, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License and 
+ * you may not use this file except in compliance with the License and
  * any applicable agreements you may have with Hillcrest Laboratories, Inc.
  * You may obtain a copy of the License at
  *
@@ -21,6 +21,10 @@
 
 #ifndef SH2_UTIL_H
 #define SH2_UTIL_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <stdint.h>
 
@@ -41,5 +45,9 @@ int16_t read16(const uint8_t * buffer);
 void write16(uint8_t * buffer, int16_t value);
 int32_t read32(const uint8_t * buffer);
 void write32(uint8_t * buffer, int32_t value);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif

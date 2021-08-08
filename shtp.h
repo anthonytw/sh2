@@ -2,7 +2,7 @@
  * Copyright 2015-18 Hillcrest Laboratories, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License and 
+ * you may not use this file except in compliance with the License and
  * any applicable agreements you may have with Hillcrest Laboratories, Inc.
  * You may obtain a copy of the License at
  *
@@ -21,6 +21,10 @@
 
 #ifndef SHTP_H
 #define SHTP_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -64,7 +68,7 @@ void shtp_close(void *pShtp);
 
 // Provide the point of the callback function for reporting SHTP asynchronous events
 void shtp_setEventCallback(void *pInstance,
-                           shtp_EventCallback_t * eventCallback, 
+                           shtp_EventCallback_t * eventCallback,
                            void *eventCookie);
 
 // Register a listener for an SHTP channel
@@ -72,7 +76,7 @@ int shtp_listenChan(void *pShtp,
                     uint16_t guid, const char * chan,
                     shtp_Callback_t *callback, void * cookie);
 
-// Register a listener for SHTP advertisements 
+// Register a listener for SHTP advertisements
 int shtp_listenAdvert(void *pShtp,
                       uint16_t guid,
                       shtp_AdvertCallback_t *advertCallback, void * cookie);
@@ -87,6 +91,10 @@ int shtp_send(void *pShtp,
 
 // Check for received data and process it.
 void shtp_service(void *pShtp);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 // #ifdef SHTP_H
 #endif

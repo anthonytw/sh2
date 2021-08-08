@@ -2,7 +2,7 @@
  * Copyright 2015-16 Hillcrest Laboratories, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License and 
+ * you may not use this file except in compliance with the License and
  * any applicable agreements you may have with Hillcrest Laboratories, Inc.
  * You may obtain a copy of the License at
  *
@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-/** 
- * @file sh2_SensorValue.h 
+/**
+ * @file sh2_SensorValue.h
  * @author David Wheeler
  * @date 10 Nov 2015
  * @brief Support for converting sensor events (messages) into natural data structures.
@@ -25,6 +25,10 @@
 
 #ifndef SH2_SENSORVALUE_H
 #define SH2_SENSORVALUE_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <stdint.h>
 
@@ -41,7 +45,7 @@
  * So W represents the Real components and X, Y and Z the Imaginary ones.
  *
  * In the Hillcrest datasheets and in this code, however, the four components
- * are named real, i, j and k, to make it explicit which is which.  If you 
+ * are named real, i, j and k, to make it explicit which is which.  If you
  * need to translate these names into the "wxyz" or "xyzw" convention, then, the
  * appropriate mapping is this:
  *     w = real
@@ -49,7 +53,7 @@
  *     y = j
  *     z = k
  */
-	
+
 /**
  * @brief Raw Accelerometer
  *
@@ -427,7 +431,7 @@ typedef struct sh2_IZroRequest {
 } sh2_IZroRequest_t;
 
 typedef struct sh2_SensorValue {
-    
+
     /** Which sensor produced this event. */
     uint8_t sensorId;
 
@@ -457,17 +461,17 @@ typedef struct sh2_SensorValue {
      */
     union {
         sh2_RawAccelerometer_t rawAccelerometer;
-        sh2_Accelerometer_t accelerometer; 
-        sh2_Accelerometer_t linearAcceleration; 
-        sh2_Accelerometer_t gravity; 
-        sh2_RawGyroscope_t rawGyroscope; 
-        sh2_Gyroscope_t gyroscope; 
-        sh2_GyroscopeUncalibrated_t gyroscopeUncal; 
-        sh2_RawMagnetometer_t rawMagnetometer; 
-        sh2_MagneticField_t magneticField; 
-        sh2_MagneticFieldUncalibrated_t magneticFieldUncal; 
-        sh2_RotationVectorWAcc_t rotationVector; 
-        sh2_RotationVector_t gameRotationVector; 
+        sh2_Accelerometer_t accelerometer;
+        sh2_Accelerometer_t linearAcceleration;
+        sh2_Accelerometer_t gravity;
+        sh2_RawGyroscope_t rawGyroscope;
+        sh2_Gyroscope_t gyroscope;
+        sh2_GyroscopeUncalibrated_t gyroscopeUncal;
+        sh2_RawMagnetometer_t rawMagnetometer;
+        sh2_MagneticField_t magneticField;
+        sh2_MagneticFieldUncalibrated_t magneticFieldUncal;
+        sh2_RotationVectorWAcc_t rotationVector;
+        sh2_RotationVector_t gameRotationVector;
         sh2_RotationVectorWAcc_t geoMagRotationVector;
         sh2_Pressure_t pressure;
         sh2_AmbientLight_t ambientLight;
@@ -498,5 +502,9 @@ typedef struct sh2_SensorValue {
 } sh2_SensorValue_t;
 
 int sh2_decodeSensorEvent(sh2_SensorValue_t *value, const sh2_SensorEvent_t *event);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif

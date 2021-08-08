@@ -2,7 +2,7 @@
  * Copyright 2018 Hillcrest Laboratories, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License and 
+ * you may not use this file except in compliance with the License and
  * any applicable agreements you may have with Hillcrest Laboratories, Inc.
  * You may obtain a copy of the License at
  *
@@ -22,6 +22,10 @@
 // Include guard
 #ifndef SH2_HAL_H
 #define SH2_HAL_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <stdint.h>
 
@@ -98,9 +102,13 @@ struct sh2_Hal_s {
 
     // This function should return a 32-bit value representing a
     // microsecond counter.  The count may roll over after 2^32
-    // microseconds.  
+    // microseconds.
     uint32_t (*getTimeUs)(sh2_Hal_t *self);
 };
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 // End of include guard
 #endif
